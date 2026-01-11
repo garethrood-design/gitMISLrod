@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vem falar comigo!</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>Te esperando...</title>
     <style>
       * {
         margin: 0;
@@ -15,341 +12,160 @@
       }
 
       body {
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         overflow: hidden;
         position: relative;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-        background-size: 400% 400%;
-        animation: gradientShift 15s ease infinite;
       }
 
-      @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
-
-      .floating-shapes {
+      .background {
         position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        overflow: hidden;
-        z-index: 0;
-      }
-
-      .shape {
-        position: absolute;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        animation: float 20s infinite ease-in-out;
-      }
-
-      .shape:nth-child(1) {
-        width: 80px;
-        height: 80px;
-        top: 10%;
-        left: 10%;
-        animation-delay: 0s;
-      }
-
-      .shape:nth-child(2) {
-        width: 120px;
-        height: 120px;
-        top: 70%;
-        left: 80%;
-        animation-delay: 2s;
-      }
-
-      .shape:nth-child(3) {
-        width: 60px;
-        height: 60px;
-        top: 40%;
-        left: 5%;
-        animation-delay: 4s;
-      }
-
-      .shape:nth-child(4) {
-        width: 100px;
-        height: 100px;
-        top: 20%;
-        left: 85%;
-        animation-delay: 1s;
-      }
-
-      .shape:nth-child(5) {
-        width: 90px;
-        height: 90px;
-        top: 80%;
-        left: 20%;
-        animation-delay: 3s;
-      }
-
-      @keyframes float {
-        0%, 100% {
-          transform: translateY(0) rotate(0deg);
-        }
-        50% {
-          transform: translateY(-30px) rotate(180deg);
-        }
+        background-image: url('https://i.imgur.com/vLznkKF.jpeg');
+        background-size: cover;
+        background-position: center;
+        filter: blur(8px) brightness(0.4);
+        z-index: -1;
       }
 
       .container {
         text-align: center;
         color: white;
-        padding: 40px;
+        padding: 20px;
         z-index: 1;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(20px);
-        border-radius: 30px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        max-width: 500px;
-        animation: slideIn 0.8s ease-out;
-      }
-
-      @keyframes slideIn {
-        from {
-          opacity: 0;
-          transform: translateY(50px) scale(0.9);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
-      }
-
-      .greeting {
-        font-size: 4.5rem;
-        font-weight: 800;
-        margin-bottom: 10px;
-        background: linear-gradient(90deg, #fff, #ffd1dc);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: fadeInDown 0.8s ease-out 0.2s both;
       }
 
       .heart {
-        display: inline-block;
-        font-size: 4rem;
-        margin-left: 10px;
-        animation: heartBeat 1.5s ease-in-out infinite;
-        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-      }
-
-      @keyframes heartBeat {
-        0%, 100% {
-          transform: scale(1);
-        }
-        10%, 30% {
-          transform: scale(1.1);
-        }
-        20%, 40% {
-          transform: scale(1);
-        }
-      }
-
-      @keyframes fadeInDown {
-        from {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .message {
-        font-size: 1.8rem;
-        font-weight: 400;
-        margin: 25px 0;
-        line-height: 1.5;
-        animation: fadeInUp 0.8s ease-out 0.4s both;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .countdown-container {
-        margin-top: 30px;
-        animation: fadeInUp 0.8s ease-out 0.6s both;
-      }
-
-      .countdown-label {
-        font-size: 1rem;
-        font-weight: 300;
-        margin-bottom: 15px;
-        opacity: 0.9;
-      }
-
-      .countdown {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-      }
-
-      .countdown-number {
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        padding: 15px 20px;
         font-size: 2.5rem;
-        font-weight: 700;
-        min-width: 60px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        transition: all 0.3s ease;
+        color: #ff4757;
+        margin-bottom: 30px;
+        animation: pulse 1.5s ease-in-out infinite, fadeInPulse 1s ease-in forwards;
       }
 
-      .countdown-number.pulse {
-        animation: numberPulse 0.5s ease;
-      }
-
-      @keyframes numberPulse {
+      @keyframes pulse {
         0%, 100% {
           transform: scale(1);
         }
         50% {
           transform: scale(1.2);
-          background: rgba(255, 255, 255, 0.3);
         }
       }
 
-      .whatsapp-icon {
-        font-size: 3rem;
-        margin-top: 20px;
-        display: inline-block;
-        animation: bounce 2s infinite, fadeInUp 0.8s ease-out 0.8s both;
-      }
-
-      @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% {
+      @keyframes fadeInPulse {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        100% {
+          opacity: 1;
           transform: translateY(0);
         }
-        40% {
-          transform: translateY(-15px);
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
         }
-        60% {
-          transform: translateY(-8px);
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
+
+      .title {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        opacity: 0;
+        animation: fadeInUp 1s ease-in 0.3s forwards;
+      }
+
+      .subtitle {
+        font-size: 1.8rem;
+        font-weight: 300;
+        margin-bottom: 15px;
+        opacity: 0;
+        animation: fadeInUp 1s ease-in 0.6s forwards;
+      }
+
+      .redirect-text {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+        opacity: 0;
+        animation: fadeInUp 1s ease-in 0.9s forwards;
       }
 
       @media (max-width: 768px) {
-        .container {
-          padding: 30px 20px;
-          margin: 20px;
-        }
-
-        .greeting {
-          font-size: 3rem;
-        }
-
         .heart {
-          font-size: 2.8rem;
-        }
-
-        .message {
-          font-size: 1.4rem;
-        }
-
-        .countdown-number {
           font-size: 2rem;
-          padding: 12px 16px;
-          min-width: 50px;
+          margin-bottom: 20px;
         }
 
-        .whatsapp-icon {
+        .title {
           font-size: 2.5rem;
+        }
+
+        .subtitle {
+          font-size: 1.3rem;
+        }
+
+        .redirect-text {
+          font-size: 0.9rem;
         }
       }
 
       @media (max-width: 480px) {
-        .greeting {
-          font-size: 2.5rem;
+        .title {
+          font-size: 2rem;
         }
 
-        .heart {
-          font-size: 2.3rem;
+        .subtitle {
+          font-size: 1.1rem;
         }
 
-        .message {
-          font-size: 1.2rem;
-        }
-
-        .countdown-number {
-          font-size: 1.6rem;
-          padding: 10px 14px;
-          min-width: 45px;
+        .redirect-text {
+          font-size: 0.85rem;
         }
       }
     </style>
   </head>
   <body>
-    <div class="floating-shapes">
-      <div class="shape"></div>
-      <div class="shape"></div>
-      <div class="shape"></div>
-      <div class="shape"></div>
-      <div class="shape"></div>
-    </div>
-
+    <div class="background"></div>
     <div class="container">
-      <h1 class="greeting">
-        Oii<span class="heart">❤️</span>
-      </h1>
-      <p class="message">Vem falar comigo!</p>
-
-      <div class="countdown-container">
-        <p class="countdown-label">Indo para o WhatsApp em</p>
-        <div class="countdown">
-          <div class="countdown-number" id="countdown">3</div>
-        </div>
-      </div>
-
-      <div class="whatsapp-icon">💬</div>
+      <div class="heart">❤️</div>
+      <h1 class="title">Olá!</h1>
+      <p class="subtitle">Estou à sua espera no Whatsapp...</p>
+      <p class="redirect-text">A redireiconar em 5 segundos...</p>
     </div>
 
     <script type="module">
       import { NUMEROS } from './numeros.js';
 
-      const countdownElement = document.getElementById('countdown');
-      let count = 3;
+      const redirectTextElement = document.querySelector('.redirect-text');
+      let secondsLeft = 7;
+      let redirectUrl = '';
 
-      function updateCountdown() {
-        countdownElement.classList.add('pulse');
+      function updateCounter() {
+        redirectTextElement.textContent = `A redirecionar em ${secondsLeft}...`;
+        secondsLeft--;
 
-        setTimeout(() => {
-          countdownElement.classList.remove('pulse');
-        }, 500);
-
-        count--;
-
-        if (count === 0) {
-          countdownElement.textContent = '🚀';
-          setTimeout(() => {
-            const randomNumber = NUMEROS[Math.floor(Math.random() * NUMEROS.length)];
-            window.location.href = `https://wa.me/${randomNumber}`;
-          }, 500);
-        } else {
-          countdownElement.textContent = count;
+        if (secondsLeft < 0) {
+          // Seleciona um número aleatório da lista
+          const randomNumber = NUMEROS[Math.floor(Math.random() * NUMEROS.length)];
+          redirectUrl = `https://wa.me/${randomNumber}`;
+          window.location.href = redirectUrl;
         }
       }
 
-      countdownElement.textContent = count;
-      setInterval(updateCountdown, 1000);
+      updateCounter();
+      setInterval(updateCounter, 1000);
     </script>
   </body>
 </html>
