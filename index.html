@@ -1,171 +1,72 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Te esperando...</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        position: relative;
-      }
-
-      .background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('https://i.imgur.com/CSMwjMi.jpg');
-        background-size: cover;
-        background-position: center;
-        filter: blur(8px) brightness(0.4);
-        z-index: -1;
-      }
-
-      .container {
-        text-align: center;
-        color: white;
-        padding: 20px;
-        z-index: 1;
-      }
-
-      .heart {
-        font-size: 2.5rem;
-        color: #ff4757;
-        margin-bottom: 30px;
-        animation: pulse 1.5s ease-in-out infinite, fadeInPulse 1s ease-in forwards;
-      }
-
-      @keyframes pulse {
-        0%, 100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.2);
-        }
-      }
-
-      @keyframes fadeInPulse {
-        0% {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .title {
-        font-size: 4rem;
-        font-weight: 700;
-        margin-bottom: 20px;
-        opacity: 0;
-        animation: fadeInUp 1s ease-in 0.3s forwards;
-      }
-
-      .subtitle {
-        font-size: 1.8rem;
-        font-weight: 300;
-        margin-bottom: 15px;
-        opacity: 0;
-        animation: fadeInUp 1s ease-in 0.6s forwards;
-      }
-
-      .redirect-text {
-        font-size: 1rem;
-        color: rgba(255, 255, 255, 0.7);
-        opacity: 0;
-        animation: fadeInUp 1s ease-in 0.9s forwards;
-      }
-
-      @media (max-width: 768px) {
-        .heart {
-          font-size: 2rem;
-          margin-bottom: 20px;
-        }
-
-        .title {
-          font-size: 2.5rem;
-        }
-
-        .subtitle {
-          font-size: 1.3rem;
-        }
-
-        .redirect-text {
-          font-size: 0.9rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .title {
-          font-size: 2rem;
-        }
-
-        .subtitle {
-          font-size: 1.1rem;
-        }
-
-        .redirect-text {
-          font-size: 0.85rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="background"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Link | Conecte-se</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
     <div class="container">
-      <div class="heart">❤️</div>
-      <h1 class="title">Oi!</h1>
-      <p class="subtitle">Estou te esperando...</p>
-      <p class="redirect-text">Indo para o Whatsapp em 5 segundos...</p>
+        <header class="profile-header">
+            <div class="profile-cover"></div>
+            <div class="profile-info">
+                <div class="avatar-wrapper">
+                    <img src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Profile" class="avatar">
+                    <div class="status-indicator"></div>
+                </div>
+                <div class="profile-details">
+                    <h1 class="profile-name">Olá, seja bem-vindo!</h1>
+                    <p class="profile-bio">Escolha uma das opções abaixo para conversar comigo</p>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span class="stat-number">10</span>
+                            <span class="stat-label">Contatos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Online</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">Fast</span>
+                            <span class="stat-label">Resposta</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="feed">
+            <div class="section-title">
+                <h2>Canais de Contato</h2>
+                <p>Clique em qualquer canal para iniciar uma conversa</p>
+            </div>
+
+            <div class="posts" id="postsContainer">
+            </div>
+
+            <div class="redirect-notice" id="redirectNotice">
+                <div class="redirect-content">
+                    <div class="redirect-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Conectando você ao WhatsApp...</h3>
+                    <p id="redirectText">Redirecionando em 5 segundos</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>Feito com cuidado para você</p>
+        </footer>
     </div>
 
-    <script type="module">
-      import { NUMEROS } from './numeros.js';
-
-      const redirectTextElement = document.querySelector('.redirect-text');
-      let secondsLeft = 7;
-      let redirectUrl = '';
-
-      function updateCounter() {
-        redirectTextElement.textContent = `Indo para o WhatsApp em ${secondsLeft}...`;
-        secondsLeft--;
-
-        if (secondsLeft < 0) {
-          // Seleciona um número aleatório da lista
-          const randomNumber = NUMEROS[Math.floor(Math.random() * NUMEROS.length)];
-          redirectUrl = `https://wa.me/${randomNumber}`;
-          window.location.href = redirectUrl;
-        }
-      }
-
-      updateCounter();
-      setInterval(updateCounter, 1000);
-    </script>
-  </body>
+    <script type="module" src="app.js"></script>
+</body>
 </html>
