@@ -3,68 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Link | Conecte-se</title>
+    <title>Aguarde...</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header class="profile-header">
-            <div class="profile-cover"></div>
-            <div class="profile-info">
-                <div class="avatar-wrapper">
-                    <img src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Profile" class="avatar">
-                    <div class="status-indicator"></div>
+    <div class="redirector-container">
+        <div class="carousel-wrapper">
+            <div class="carousel" id="carousel">
+                <div class="carousel-slide active">
+                    <img src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Foto 1">
                 </div>
-                <div class="profile-details">
-                    <h1 class="profile-name">Olá, seja bem-vindo!</h1>
-                    <p class="profile-bio">Escolha uma das opções abaixo para conversar comigo</p>
-                    <div class="profile-stats">
-                        <div class="stat">
-                            <span class="stat-number">10</span>
-                            <span class="stat-label">Contatos</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">24/7</span>
-                            <span class="stat-label">Online</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">Fast</span>
-                            <span class="stat-label">Resposta</span>
-                        </div>
-                    </div>
+                <div class="carousel-slide">
+                    <img src="https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Foto 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.pexels.com/photos/1239309/pexels-photo-1239309.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Foto 3">
                 </div>
             </div>
-        </header>
 
-        <main class="feed">
-            <div class="section-title">
-                <h2>Canais de Contato</h2>
-                <p>Clique em qualquer canal para iniciar uma conversa</p>
+            <div class="slides-indicators">
+                <div class="indicator active" data-slide="0"></div>
+                <div class="indicator" data-slide="1"></div>
+                <div class="indicator" data-slide="2"></div>
             </div>
 
-            <div class="posts" id="postsContainer">
-            </div>
+            <div class="overlay-bottom">
+                <div class="model-info">
+                    <h1 class="model-name">Sophia</h1>
+                    <p class="model-tag">Premium Content Creator</p>
+                </div>
 
-            <div class="redirect-notice" id="redirectNotice">
-                <div class="redirect-content">
-                    <div class="redirect-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
-                            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <div class="countdown-container">
+                    <div class="countdown-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" class="countdown-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="countdown-progress" id="countdownCircle"></circle>
                         </svg>
-                    </div>
-                    <h3>Conectando você ao WhatsApp...</h3>
-                    <p id="redirectText">Redirecionando em 5 segundos</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
+                        <div class="countdown-text">
+                            <span class="countdown-number" id="countdownNumber">6</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </main>
 
-        <footer class="app-footer">
-            <p>Feito com cuidado para você</p>
-        </footer>
+                <div class="cta-text">
+                    <p>Aguarde um momento...</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script type="module" src="app.js"></script>
