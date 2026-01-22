@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #000;
+    color: #fff;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.redirector-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.carousel-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    max-width: 600px;
+    aspect-ratio: 9 / 16;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slides-indicators {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: #fff;
+    width: 24px;
+    border-radius: 4px;
+}
+
+.overlay-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 280px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 40px 20px 30px;
+    z-index: 5;
+}
+
+.model-info {
+    text-align: center;
+    margin-bottom: 30px;
+    animation: slideUp 0.6s ease-out;
+}
+
+.model-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.model-tag {
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    font-weight: 500;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.countdown-container {
+    margin-bottom: 25px;
+    animation: slideUp 0.6s ease-out 0.1s backwards;
+}
+
+.countdown-circle {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.countdown-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.countdown-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 3;
+}
+
+.countdown-progress {
+    fill: none;
+    stroke: url(#gradientCountdown);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 282.7;
+    stroke-dashoffset: 282.7;
+    transition: stroke-dashoffset 1s linear;
+}
+
+.countdown-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.countdown-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.cta-text {
+    animation: slideUp 0.6s ease-out 0.2s backwards;
+}
+
+.cta-text p {
+    font-size: 0.95rem;
+    color: #b0b0b0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .carousel-wrapper {
+        max-width: 100%;
+        aspect-ratio: auto;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .model-name {
+        font-size: 1.8rem;
+    }
+
+    .countdown-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .countdown-number {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .overlay-bottom {
+        height: 240px;
+        padding: 30px 20px 25px;
+    }
+
+    .model-info {
+        margin-bottom: 20px;
+    }
+
+    .model-name {
+        font-size: 1.6rem;
+        margin-bottom: 4px;
+    }
+
+    .model-tag {
+        font-size: 0.85rem;
+    }
+
+    .countdown-container {
+        margin-bottom: 20px;
+    }
+
+    .countdown-circle {
+        width: 90px;
+        height: 90px;
+    }
+
+    .countdown-number {
+        font-size: 2.2rem;
+    }
+
+    .cta-text p {
+        font-size: 0.9rem;
+    }
+}
